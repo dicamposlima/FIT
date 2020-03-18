@@ -108,7 +108,7 @@ def color_of_pokemon(nome):
         check_str(nome)
         id = numero_do_pokemon(nome)
     else:
-        check_int(numero)
+        check_int(nome)
         id = nome
     pokemon = api.get(f"{site_pokeapi}/api/v2/pokemon-species/{id}/")
     if pokemon.status_code == 404:
