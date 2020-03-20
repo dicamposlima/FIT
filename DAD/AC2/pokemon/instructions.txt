@@ -1,8 +1,10 @@
 python36 -m pip install ./ujson/ujson-1.35-cp36-cp36m-win_amd64.whl --user
 python36 -m pip install -r requirements.txt --user
+python36 -m pip install requests
+python36 -m pip list
 
 cd /pokemon/pokeapi 
 python36 manage.py runserver --settings=config.local
 
-python36 -m pip install requests
-python36 -m pip list
+cd /treinador
+python36 treinador.py
