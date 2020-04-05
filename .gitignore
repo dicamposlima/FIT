@@ -1,5 +1,6 @@
 OPE
 DAD/AC2/pokemon/pokeapi/
+DAD/AC2/pokemon/atividade/__pycache__/
 
 # ignore all files starting with . or ~
 .*
