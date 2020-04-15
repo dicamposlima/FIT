@@ -49,6 +49,7 @@ Dica: para transformar um numero n em string, faça str(n)
 def cria_naipe(naipe):
     return [element + naipe for element in ['A','2','3','4','5','6','7','8','9','10','J','Q','K']]
     # return f"{naipe} ".join(map(str, ["A",2,3,4,5,6,7,8,9,10,"J","Q","K",""])).split(" ")[0:13]
+    # return [element + naipe for element in ['A',*['A',*[str(numeros) for numeros in range(2,11)],'J','Q','K'],'J','Q','K']]
 
 
 #faça uma função que cria um baralho completo, com todas as 52 cartas
