@@ -48,7 +48,11 @@ Execute:
 Qual o estado da fila?
 Responda, em forma de lista, na variavel fila1
 '''
-fila1=[]
+
+
+fila1 = [3, 4, 1, 2]
+
+
 '''
 Exercicio
 
@@ -64,7 +68,11 @@ Execute:
 Qual o estado da fila?
 Responda, em forma de lista, na variavel fila2
 '''
-fila2=[]
+
+
+fila2 = [1, 2]
+
+
 '''
 Exercicio
 
@@ -82,7 +90,10 @@ Execute:
 Qual o estado da fila?
 Responda, em forma de lista, na variavel fila3
 '''
-fila3=[]
+
+
+fila3 = [2, 7]
+
 
 '''
 
@@ -125,8 +136,11 @@ EXERCICIO
     faca uma funcao coloca_fila(fila,elemento)
     que adiciona o elemento à fila
 '''
-def coloca_fila(fila,elemento):
-    pass
+
+
+def coloca_fila(fila: list, elemento: int) -> list:
+    fila.append(elemento)
+    return fila
 
 '''
 EXERCICIO
@@ -143,8 +157,10 @@ EXERCICIO
     [2,3] #esses sao os caras que ainda estao na fila
 
 '''
-def retira(fila):
-    pass
+
+
+def retira(fila: list) -> int:
+    return fila.pop(0)
 
 '''
 EXPLICACAO
@@ -173,8 +189,10 @@ EXPLICACAO
     2
 '''
 
-def tamanho(fila):
-    pass
+
+def tamanho(fila: list) -> int:
+    return len(fila)
+
 
 '''
 EXERCICIO
@@ -184,8 +202,10 @@ que diz se a fila está vazia (len(fila) == 0) ou nao
 Ela retorna True se a fila estiver vazia, False caso contrário
 '''
 
-def fila_vazia(fila):
-    pass
+
+def fila_vazia(fila: list) -> bool:
+    return False if tamanho(fila) > 0 else True
+
 
 '''
 EXPLICACAO
@@ -211,8 +231,9 @@ EXPLICACAO
     100
 '''
 
-def primeiro(fila):
-    pass
+
+def primeiro(fila: list) -> int:
+    return fila[0]
 
 
 '''
@@ -227,8 +248,10 @@ EXERCICIO
     se fizermos vira_1(fila), a fila passa a ser [2,3,1]
 '''
 
-def vira_1(fila):
-    pass
+
+def vira_1(fila: list) -> list:
+    primeiro_elemento = retira(fila)
+    return coloca_fila(fila, primeiro_elemento)
 
 
 '''
@@ -248,8 +271,11 @@ EXERCICIO
     #depois o 3, depois o 4, depois o 5.
     depois de vira_5(fila), a fila será [6,7,8,9,1,2,3,4,5]
 '''
-def vira_5(fila):
-    pass
+
+
+def vira_5(fila:list) -> list:
+    return vira_n(fila, 5)
+
 
 '''
 EXERCICIO
@@ -264,8 +290,13 @@ EXERCICIO
     se fizermos vira_n(fila,3) novamente, a fila será [1,2,3,4,5,6]
     se fizermos vira_n(fila,1), a fila será [2,3,4,5,6,1]
 '''
-def vira_n(fila,n):
-    pass
+
+
+def vira_n(fila: list, n: int) -> list:
+    for vira in range(n):
+        fila = vira_1(fila)
+    return fila
+
 
 '''
 EXERCICIO
@@ -281,8 +312,12 @@ EXERCICIO
     depois de vira_4_mata_1(fila), a fila será [6,7,8,9,1,2,3,4]
     se fizemos vira_4_mata_1(fila) de novo, a fila será [2,3,4,6,7,8,9]
 '''
-def vira_4_mata_1(fila):
-    pass
+
+
+def vira_4_mata_1(fila:list) -> int:
+    fila = vira_n(fila, 4)
+    return retira(fila)
+
 
 '''
 Exercicio
@@ -291,8 +326,11 @@ Exercicio
     dos numeros de 1 até n
 '''
 
-def fila_inicial(n):
-    pass
+
+def fila_inicial(n:int) -> list:
+    fila = range(1, n+1)
+    return list(fila)
+
 
 '''
 EXPLICACAO
@@ -342,10 +380,12 @@ A ideia é fazer isso da seguinte forma:
 '''
 
 
-def josephus(pessoas,pulo):
-    pass #tire esse pass e coloque aqui o seu código
-
-
+def josephus(pessoas: int, pulo: int) -> int:
+    fila = fila_inicial(pessoas)
+    while tamanho(fila) > 1:
+        fila = vira_n(fila, pulo-1)
+        fila.pop(0)
+    return fila.pop(0)
 
 
 '''
