@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}LOGIN{% endblock %}
+{% block content %}
+    <h1 class="display-4">{{ mensagem|safe }}</h1>
+    <form action="/form", method="POST">
+        <div class="form-group">
+            <input type="text" id="login" name="login" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <input type="password" id="pwd" name="password" autocomplete="off" />
+        </div>
+        <button type="submit" class="btn btn-primary">Logar</button>
+    </form>
+{% endblock %}
