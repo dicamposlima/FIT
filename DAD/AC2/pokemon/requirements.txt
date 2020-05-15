@@ -9,7 +9,7 @@ django-imagekit==4.0.2
 django-redis==4.10.0
 django-cachalot==2.1.0
 django-tastypie==0.14.2
-djangorestframework==3.9.0
+djangorestframework==3.9.1
 drf-ujson==1.2.0
 gunicorn==19.9.0
 mimeparse==0.1.3
