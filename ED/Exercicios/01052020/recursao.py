@@ -7,60 +7,58 @@ a unica excessao é o zero. Definimos fatorial de 0 como sendo 1
 Quanto é fatorial de 0? de 1? de 6? Responda nas variaveis abaixo
 """
 
-fatorial_6 = 720
+fatorial_6 = 6 * 5 * 4 * 3 * 2
 fatorial_1 = 1
 fatorial_0 = 1
 
-"""
+'''
 A variavel abaixo já vem preenchida com o fatorial de 100.
 
 Preencha a variavel seguinte com o fatorial de 101
-"""
+'''
 
 fatorial_100 = 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
-fatorial_101 = 9425947759838359420851623124482936749562312794702543768327889353416977599316221476503087861591808346911623490003549599583369706302603264000000000000000000000000
+fatorial_101 = fatorial_100 * 101
 
-"""
+'''
 implemente uma funcao recursiva que calcula o fatorial
 
 DICA: para passar nos primeiros testes, sua funcao
 só tem que acertar o fatorial de 1 e de 0
 
 Depois incremente ela para o resto usando recursao
-"""
+'''
 
 
 def fatorial(n):
-    if n == 0:
-        return 1
-    return n*fatorial(n-1)
+    return 1 if n == 0 else n * fatorial(n - 1)
 
 
-"""
+'''
     Uma definição simplista (e errada) de logaritmo:
 log é o número de vezes que posso dividir um número por 2,
 até obter 1 ou alguma coisa menor que 1
 por exemplo, log(4)=2 (pois 4/2 dá 2, 2/2 dá 1)
 outro exemplo, log(5)=3 (5/2 dá 2.5, 2.5/2 dá 1.25, 
-1.25/2 dá menos do que 1)"""
+1.25/2 dá menos do que 1)'''
 
-"""
+'''
 Qual é o log_tosco de 8? e 16? e 32? Responda nas variaveis abaixo
-"""
+'''
 log_8 = 3
 log_16 = 4
 log_32 = 5
 
-"""
+'''
 Sabendo que o log_tosco de 1000 é 10, quanto valem os logs
 de 2000, 4000 e 8000 e 16000?
-"""
+'''
 log_2000 = 11
 log_4000 = 12
 log_8000 = 13
 log_16000 = 14
 
-"""
+'''
     Defina uma funcao log_tosco, recursiva, de acordo com
 essa definição simplista de log
 
@@ -69,16 +67,17 @@ acertar o log_tosco de 2.
 
 Depois melhore sua funcao, adicionando a recursao, para
 resolver os outros casos e passar nos outros testes
-"""
+'''
 
 
 def log_tosco(n):
-    if n <= 1:
+    if (n <= 1):
         return 0
-    return log_tosco(n/2)+1
+    contador = log_tosco(n / 2)
+    return contador + 1
 
 
-"""
+'''
 Explicacao
 lembremos algumas coisas sobre listas.
 Veja os exemplos a seguir
@@ -105,30 +104,30 @@ e todos os que vem depois dele
 E o lista.pop(0)? 
 o pop arranca elementos da lista.
 fazer lista[1:] nao muda a lista, mas sim cria uma nova
-"""
+'''
 
-"""
+'''
 defina uma funcao primeiro que recebe uma lista
 e retorna o primeiro elemento dela
-"""
+'''
 
 
 def primeiro(lista):
     return lista[0]
 
 
-"""
+'''
 defina uma funcao todos_menos_primeiro que recebe
 uma lista e retorna uma lista com todos os elementos
 menos o primeiro.
-"""
+'''
 
 
 def todos_menos_primeiro(lista):
     return lista[1:]
 
 
-"""
+'''
 defina uma função recursiva maximo, que recebe uma lista
 e retorna o maior de todos os números
 que estão na lista
@@ -138,25 +137,28 @@ com um unico elemento. Isso já passa o primeiro teste
 
 Se o outro teste ficar complicado, tem mais uma dica embaixo
 da funcao
-"""
+'''
 
 
 def maximo(lista):
     if len(lista) == 1:
         return lista[0]
-    return lista[0] if lista[0] > maximo(lista[1:]) else maximo(lista[1:])
+    maximo_ate_agora = maximo(lista[1:])
+    if maximo_ate_agora > lista[0]:
+        return maximo_ate_agora
+    return lista[0]
 
 
-"""
+'''
 dica: uma coisa que você vai usar é o calculo recursivo do 
 maximo de lista[1:]
 ou seja, para resolver maximo([4,2,3]) voce vai pegar
 lista[1:], que é [2,3], calcular recursivamente o máximo, que é 3,
 e comparar com o lista[0], que é o 4, para achar o maior (no
 caso, o maior entre 3 e 4 é 4)
-"""
+'''
 
-"""
+'''
 Explicacao
 >>> palavra='banana'
 >>> palavra[0] #primeiro caractere, no indice 0
@@ -170,11 +172,11 @@ Explicacao
 
 O mesmo acesso que vale para listas, também vale para
 strings.
-"""
+'''
 
-"""
+'''
 faça as funcoes primeira_letra e todas_as_letras_menos_primeira
-"""
+'''
 
 
 def primeira_letra(string):
@@ -185,7 +187,7 @@ def todas_as_letras_menos_primeira(string):
     return string[1:]
 
 
-"""
+'''
 Defina uma função recursiva que recebe uma string e retorna
 a string invertida
 
@@ -195,27 +197,29 @@ Só com isso você já passa um teste.
 
 Se vc se complicar com a recursao, tem mais uma dica embaixo
 da funcao
-"""
+'''
 
 
 def inverte(palavra):
-    if len(palavra) < 2:
-        return palavra
-    return inverte(palavra[1:])+palavra[0]
+    if len(palavra) == 0:
+        return ''
+    if len(palavra) == 1:
+        return palavra[0]
+    return inverte(palavra[1:]) + palavra[0]
 
 
-"""    
+'''    
 dica: faça assim: pegue a primeira letra (palavra[0])
  e o resto (palavra[1:])
  inverta o resto depois junte palavra[0]
-"""
-"""
+'''
+'''
 Retomando o log... quanto vale o log de um milhao?
 Lembre-se que log_1000 = 10, e um milhao = 1000*1000
-"""
-log_1000000 = 20
+'''
+log_1000000 = log_tosco(1000000)
 
-"""
+'''
 O próximo exercicio precisa de mais explicacao:
 
 Imagine que estamos procurando um arquivo em
@@ -244,20 +248,30 @@ Pode gerar listas pra testar
 Dica: implementei uma função eh_lista pra você usar.
 eh_lista(variavel) retorna True se a variavel é uma lista,
 False se nao é
-"""
-
+'''
 
 
 def acha_segredo(lista):
-    if len(lista) == 0:
-        return False
-    if 'segredo' in lista:
-        return True
-    if eh_lista(lista[0]):
-        return acha_segredo(lista[0]+lista[1:])
-    return acha_segredo(lista[1:])
+    if not eh_lista(lista):
+        if atual == 'segredo':
+            return True
+        else:
+            return False
+    else:
+        atual = lista[0]
+        if not eh_lista(atual):
+            if atual == 'segredo':
+                resposta = True
+            else:
+                resposta = False
+        else:
+            resposta = acha_segredo(atual)
+        if len(lista) > 1:
+            return resposta or acha_segredo(lista[1:])
+        return resposta
 
-"""
+
+'''
 Faça uma funcao conta_ll que recebe uma lista de listas e devolve
 quantos numeros ela tem no total.
 
@@ -277,7 +291,7 @@ e a segunda lista tem uma lista dentro
 [1,2],
 [3,4,2   , [2] ]
 ]
- conta_ll([1,2,[1,2],[3,4,2,[2]]]) retorna 8
+conta_ll([1,2,[1,2],[3,4,2,[2]]]) retorna 8
 observe, no exemplo acima temos uma lista com 2 numeros
 e 2 listas dentro. A segunda lista tem uma lista dentro
 [
@@ -290,41 +304,42 @@ e 2 listas dentro. A segunda lista tem uma lista dentro
 Como você deve ter percebido pelo exemplo, uma lista
 de listas pode conter varios niveis de listas, uma dentro da outra.
 
-"""
+'''
 
 
 def conta_ll(lista):
     if len(lista) == 0:
         return 0
+    if len(lista) == 1:
+        if eh_lista(lista[0]):
+            return conta_ll(lista[0])
+        return 1
+
     if eh_lista(lista[0]):
-        return conta_ll(lista[0]+lista[1:])
-    return (1 + conta_ll(lista[1:]))
+        atual = conta_ll(lista[0])
+    else:
+        atual = 1
+    contador = conta_ll(lista[1:])
+    return contador + atual
 
 
-"""
+'''
 Implemente uma função anagramas 
 que recebe uma palavra e devolve uma lista com todos 
 os seus "embaralhamentos" (anagramas)
 
 Por exemplo, anagramas('ab') deve retornar ['ab','ba']
 Por exemplo, anagramas('abc') deve retornar ['abc', 'acb', 'bac', 'bca', 'cab', 'cba']
-"""
+'''
 
 
 def anagramas(palavra):
-    if not palavra:
-        return [palavra]
-    anagrama = []
-    subanagramas = anagramas(palavra[1:])
-    for letra in subanagramas:
-        for indice in range(len(letra) + 1):
-            anagrama.append(letra[:indice] + palavra[0] + letra[indice:])
-    return anagrama
+    pass
 
 
-"""
+'''
 A partir daqui, não tem nada pra você implementar
-"""
+'''
 
 import random
 
@@ -340,16 +355,16 @@ def imprime(lista):
 def gera_r(max_subdirs, max_arquivos, coloca_segredo):
     subdirs, arquivos = 0, 0
     lista = []
-    if (max_subdirs > 0):
+    if max_subdirs > 0:
         subdirs = random.randint(max_subdirs // 2, max_subdirs)
     for i in range(subdirs):
         lista2 = gera_r(max_subdirs - 1, max_arquivos - 1, False)
         lista.append(lista2)
-    if (max_arquivos > 0):
+    if max_arquivos > 0:
         arquivos = random.randint(max_arquivos // 2, max_arquivos)
     for i in range(arquivos):
         lista.append(random.randint(0, arquivos))
-    if (coloca_segredo):
+    if coloca_segredo:
         adiciona_segredo(lista)
     return lista
 
@@ -361,8 +376,7 @@ def adiciona_segredo(lista):
 
 
 def aplaina(lista):
-    plana = []
-    plana.append(lista)
+    plana = [lista]
     for a in lista:
         if eh_lista(a):
             plana.extend(aplaina(a))
@@ -559,7 +573,7 @@ class TestStringMethods(unittest.TestCase):
 
     def test_800_acha_segredo(self):
         for i in range(0, 100):
-            if (i % 2 == 0):
+            if i % 2 == 0:
                 segredo = True
             else:
                 segredo = False
