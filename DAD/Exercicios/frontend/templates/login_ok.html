@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}SEJA BEM-VINDO, {{login}}{% endblock %}
+{% block content %}
+    <h1 class="display-4">Seja bem-vindo, {{login}}.</h1>
+    <br>
+    <a href="/register"
+        class="btn btn-primary btn-lg active"
+       role="button"
+       aria-pressed="true">CADASTRAR DADOS</a>
+{% endblock %}

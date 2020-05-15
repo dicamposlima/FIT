@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}DADOS CADASTRADOS{% endblock %}
+{% block content %}
+    <br>
+    <p>{{ mensagem }}
+        <br>
+        <form action="/logout", method="POST">
+            <button type="submit" class="btn btn-primary">Sair</button>
+        </form>
+    </p>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <strong>NOME: </strong>{{ data['nome'] }}
+        </li>
+        <li class="list-group-item">
+            <strong>CPF: </strong>{{ data['cpf'] }}
+        </li>
+        <li class="list-group-item">
+            <strong>EMAIL: </strong>{{ data['email'] }}
+        </li>
+        <li class="list-group-item">
+            <strong>TELEFONE: </strong>{{ data['telefone'] }}
+        </li>
+        <li class="list-group-item">
+            <strong>CEP: </strong>{{ data['cep']['cep'] }}
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>LOGRADOURO: </strong>{{ data['cep']['logradouro'] }}
+                </li>
+                <li class="list-group-item">
+                    <strong>BAIRRO: </strong>{{ data['cep']['bairro'] }}
+                </li>
+                <li class="list-group-item">
+                    <strong>LOCALIDADE: </strong>{{ data['cep']['localidade'] }}
+                </li>
+                <li class="list-group-item">
+                    <strong>UF: </strong>{{ data['cep']['uf'] }}
+                </li>
+            </ul>
+        </li>
+    </ul>
+{% endblock %}
